@@ -85,3 +85,203 @@ Migrating to ChangingCatstable (20210205192441)
   [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (812.1ms)[0m  [1m[35mCREATE DATABASE "ninetynine_cats_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (255.8ms)[0m  [1m[35mCREATE DATABASE "ninetynine_cats_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+Started GET "/" for ::1 at 2021-02-05 14:52:41 -0500
+
+ActiveRecord::PendingMigrationError - Migrations are pending. To resolve this issue, run:
+        bin/rails db:migrate RAILS_ENV=development:
+
+Started POST "/__better_errors/4b2162bab6552fb2/variables" for ::1 at 2021-02-05 14:52:43 -0500
+  [1m[35m (149.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (55.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (3.0ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2803807452268522245)[0m
+  ↳ bin/rails:9
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateCats (20210205185250)
+  [1m[35m (41.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (24.3ms)[0m  [1m[35mCREATE TABLE "cats" ("id" bigserial primary key, "birth_date" date NOT NULL, "color" character varying NOT NULL, "name" character varying NOT NULL, "sex" character varying(1) NOT NULL, "descrption" text NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20210205185250_create_cats.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (7.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210205185250"]]
+  ↳ bin/rails:9
+  [1m[35m (9.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to ChangingCatstable (20210205192441)
+  [1m[35m (41.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (3.0ms)[0m  [1m[35mALTER TABLE "cats" RENAME COLUMN "descrption" TO "description"[0m
+  ↳ db/migrate/20210205192441_changing_catstable.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (7.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210205192441"]]
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (1.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (26.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-02-05 19:53:25.818406"], ["updated_at", "2021-02-05 19:53:25.818406"]]
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(2803807452268522245)[0m
+  ↳ bin/rails:9
+  [1m[35m (23.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (2.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mCat Load (44.2ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:12
+  [1m[36mCat Create (16.7ms)[0m  [1m[32mINSERT INTO "cats" ("birth_date", "color", "name", "sex", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["birth_date", "2015-01-20"], ["color", "brown"], ["name", "whiskers"], ["sex", "M"], ["description", "im a fkn cat"], ["created_at", "2021-02-05 20:04:55.698093"], ["updated_at", "2021-02-05 20:04:55.698093"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (3.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:14
+  [1m[36mCat Create (0.9ms)[0m  [1m[32mINSERT INTO "cats" ("birth_date", "color", "name", "sex", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["birth_date", "2005-01-20"], ["color", "pink"], ["name", "whiskers"], ["sex", "M"], ["description", "im a fkn cat"], ["created_at", "2021-02-05 20:04:55.724758"], ["updated_at", "2021-02-05 20:04:55.724758"]]
+  ↳ db/seeds.rb:14
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:14
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:17
+  [1m[36mCat Create (1.4ms)[0m  [1m[32mINSERT INTO "cats" ("birth_date", "color", "name", "sex", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["birth_date", "2000-01-20"], ["color", "grey"], ["name", "whiskers"], ["sex", "M"], ["description", "im a fkn cat"], ["created_at", "2021-02-05 20:04:55.737857"], ["updated_at", "2021-02-05 20:04:55.737857"]]
+  ↳ db/seeds.rb:17
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:17
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:20
+  [1m[36mCat Create (1.7ms)[0m  [1m[32mINSERT INTO "cats" ("birth_date", "color", "name", "sex", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["birth_date", "2000-11-20"], ["color", "black"], ["name", "whiskers"], ["sex", "M"], ["description", "im a fkn cat"], ["created_at", "2021-02-05 20:04:55.746440"], ["updated_at", "2021-02-05 20:04:55.746440"]]
+  ↳ db/seeds.rb:20
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:20
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (44.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ db/seeds.rb:23
+  [1m[36mCat Load (2.2ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  [1m[36mCat Load (3.9ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  [1m[35m (42.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mCat Load (1.2ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mCat Destroy (43.7ms)[0m  [1m[31mDELETE FROM "cats" WHERE "cats"."id" = $1[0m  [["id", 1]]
+  ↳ db/seeds.rb:9
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mCat Destroy (3.8ms)[0m  [1m[31mDELETE FROM "cats" WHERE "cats"."id" = $1[0m  [["id", 2]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mCat Destroy (0.6ms)[0m  [1m[31mDELETE FROM "cats" WHERE "cats"."id" = $1[0m  [["id", 3]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mCat Destroy (2.3ms)[0m  [1m[31mDELETE FROM "cats" WHERE "cats"."id" = $1[0m  [["id", 4]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:12
+  [1m[36mCat Create (0.9ms)[0m  [1m[32mINSERT INTO "cats" ("birth_date", "color", "name", "sex", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["birth_date", "2015-01-20"], ["color", "brown"], ["name", "whiskers"], ["sex", "M"], ["description", "im a fkn cat"], ["created_at", "2021-02-05 20:09:20.416840"], ["updated_at", "2021-02-05 20:09:20.416840"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:14
+  [1m[36mCat Create (0.6ms)[0m  [1m[32mINSERT INTO "cats" ("birth_date", "color", "name", "sex", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["birth_date", "2005-01-20"], ["color", "pink"], ["name", "whiskers"], ["sex", "F"], ["description", "im a fkn cat"], ["created_at", "2021-02-05 20:09:20.420811"], ["updated_at", "2021-02-05 20:09:20.420811"]]
+  ↳ db/seeds.rb:14
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:14
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:17
+  [1m[36mCat Create (0.7ms)[0m  [1m[32mINSERT INTO "cats" ("birth_date", "color", "name", "sex", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["birth_date", "2000-01-20"], ["color", "grey"], ["name", "whiskers"], ["sex", "M"], ["description", "im a fkn cat"], ["created_at", "2021-02-05 20:09:20.425011"], ["updated_at", "2021-02-05 20:09:20.425011"]]
+  ↳ db/seeds.rb:17
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:17
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:20
+  [1m[36mCat Create (1.4ms)[0m  [1m[32mINSERT INTO "cats" ("birth_date", "color", "name", "sex", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["birth_date", "2000-11-20"], ["color", "black"], ["name", "whiskers"], ["sex", "M"], ["description", "im a fkn cat"], ["created_at", "2021-02-05 20:09:20.429035"], ["updated_at", "2021-02-05 20:09:20.429035"]]
+  ↳ db/seeds.rb:20
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:20
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ db/seeds.rb:23
+  [1m[36mCat Load (2.2ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mCat Load (1.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mCat Destroy (0.8ms)[0m  [1m[31mDELETE FROM "cats" WHERE "cats"."id" = $1[0m  [["id", 1]]
+  ↳ db/seeds.rb:9
+  [1m[35m (40.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mCat Destroy (0.6ms)[0m  [1m[31mDELETE FROM "cats" WHERE "cats"."id" = $1[0m  [["id", 2]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mCat Destroy (0.5ms)[0m  [1m[31mDELETE FROM "cats" WHERE "cats"."id" = $1[0m  [["id", 3]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mCat Destroy (1.5ms)[0m  [1m[31mDELETE FROM "cats" WHERE "cats"."id" = $1[0m  [["id", 4]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:12
+  [1m[36mCat Create (1.7ms)[0m  [1m[32mINSERT INTO "cats" ("birth_date", "color", "name", "sex", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["birth_date", "2015-01-20"], ["color", "brown"], ["name", "whiskers"], ["sex", "M"], ["description", "im a fkn cat"], ["created_at", "2021-02-05 20:10:48.939315"], ["updated_at", "2021-02-05 20:10:48.939315"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:14
+  [1m[36mCat Create (1.2ms)[0m  [1m[32mINSERT INTO "cats" ("birth_date", "color", "name", "sex", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["birth_date", "2005-01-20"], ["color", "pink"], ["name", "whiskers"], ["sex", "F"], ["description", "im a fkn cat"], ["created_at", "2021-02-05 20:10:48.945568"], ["updated_at", "2021-02-05 20:10:48.945568"]]
+  ↳ db/seeds.rb:14
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:14
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:17
+  [1m[36mCat Create (0.5ms)[0m  [1m[32mINSERT INTO "cats" ("birth_date", "color", "name", "sex", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["birth_date", "2000-01-20"], ["color", "grey"], ["name", "whiskers"], ["sex", "M"], ["description", "im a fkn cat"], ["created_at", "2021-02-05 20:10:48.952199"], ["updated_at", "2021-02-05 20:10:48.952199"]]
+  ↳ db/seeds.rb:17
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:17
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:20
+  [1m[36mCat Create (0.7ms)[0m  [1m[32mINSERT INTO "cats" ("birth_date", "color", "name", "sex", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["birth_date", "2000-11-20"], ["color", "black"], ["name", "whiskers"], ["sex", "M"], ["description", "im a fkn cat"], ["created_at", "2021-02-05 20:10:48.955406"], ["updated_at", "2021-02-05 20:10:48.955406"]]
+  ↳ db/seeds.rb:20
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:20
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mCat Create (0.6ms)[0m  [1m[32mINSERT INTO "cats" ("birth_date", "color", "name", "sex", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["birth_date", "2010-02-01"], ["color", "white"], ["name", "biscuit"], ["sex", "F"], ["description", "blabla"], ["created_at", "2021-02-05 20:10:48.962201"], ["updated_at", "2021-02-05 20:10:48.962201"]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[36mCat Load (1.0ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  [1m[36mCat Load (2.2ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" ORDER BY "cats"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mCat Load (2.6ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" ORDER BY "cats"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
